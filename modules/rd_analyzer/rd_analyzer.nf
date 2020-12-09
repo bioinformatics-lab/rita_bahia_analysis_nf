@@ -21,7 +21,7 @@ process RD_ANALYZER {
     genomeName = genomeFileName.toString().split("\\_")[0]
 
     """
-    python  /RD-Analyzer/RD-Analyzer.py  -o ./${genomeName} ${genomeReads[0]} ${genomeReads[1]}
+    python  /RD-Analyzer/RD-Analyzer.py  -o ${genomeName} ${genomeReads[0]} ${genomeReads[1]}
     """
 }
 

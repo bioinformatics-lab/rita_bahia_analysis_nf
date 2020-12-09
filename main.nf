@@ -18,7 +18,7 @@ workflow test {
 
     TRIMMOMATIC(sra_ids_ch)
 
-    RD_ANALYZER(TRIMMOMATIC.out)
+//    RD_ANALYZER(TRIMMOMATIC.out)
 
     SPOTYPING(TRIMMOMATIC.out)
 
