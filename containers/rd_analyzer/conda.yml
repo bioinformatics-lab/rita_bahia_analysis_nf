@@ -1,0 +1,9 @@
+name: rd_analyzer
+channels:
+  - defaults
+  - bioconda
+  - conda-forge
+dependencies:
+  - python=2.7
+  - samtools=0.1.19
+  - bwa=0.7.17
