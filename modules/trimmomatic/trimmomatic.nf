@@ -1,6 +1,8 @@
+nextflow.enable.dsl= 2
+
 
 params.saveMode = 'copy'
-params.resultsDir = 'results/trimmomatic'
+params.resultsDir = '$launchDir/results/trimmomatic'
 
 
 
@@ -39,4 +41,12 @@ process TRIMMOMATIC {
     """
 }
 
+workflow test {
 
+
+input_ch = Channel.fromFilePairs("$launchDir/test_data/*_{1,2}.fastq.gz")
+
+
+TRIMMOMATIC(input_ch)
+
+}
