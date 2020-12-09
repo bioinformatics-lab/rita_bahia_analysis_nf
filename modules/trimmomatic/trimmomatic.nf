@@ -11,7 +11,7 @@ process TRIMMOMATIC {
     memory "16 GB"
 
     input:
-    tuple val(genomeName), file(genomeReads)
+    tuple val(genomeName), path(genomeReads)
 
     output:
     path("*_{R1,R2}.p.fastq.gz")

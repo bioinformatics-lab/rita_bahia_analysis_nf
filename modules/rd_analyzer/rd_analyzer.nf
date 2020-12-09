@@ -10,7 +10,7 @@ process RD_ANALYZER {
     cpus 2
 
     input:
-    tuple val(genomeFileName), file(genomeReads)
+    tuple val(genomeFileName), path(genomeReads)
 
     output:
     tuple path("""${genomeName}.result"""), path("""${genomeName}.depth""")

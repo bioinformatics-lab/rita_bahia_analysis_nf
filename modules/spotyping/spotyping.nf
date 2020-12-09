@@ -11,7 +11,7 @@ process SPOTYPING {
     cpus 2
 
     input:
-    tuple val(genomeFileName), file(genomeReads)
+    tuple val(genomeFileName), path(genomeReads)
 
     output:
     tuple file('*.txt'), file('SITVIT*.xls')
