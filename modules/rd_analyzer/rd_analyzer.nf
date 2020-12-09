@@ -8,10 +8,11 @@ params.shouldPublish = true
 
 process RD_ANALYZER {
     tag "${genomeFileName}"
-    container 'nextflowhubcontainers/rdanalyzer'
+    container 'quay.io/bioinformatics_playground/rd_analyzer:0.0.1'
     publishDir params.resultsDir, mode: params.saveMode, enabled: params.shouldPublish
+    cpus 8
+    memory "16 GB"
 
-    cpus 2
 
     input:
     tuple val(genomeFileName), path(genomeReads)
