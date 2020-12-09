@@ -1,0 +1,8 @@
+name: spotyping
+channels:
+  - defaults
+  - bioconda
+  - conda-forge
+dependencies:
+  - python=2.7
+  - blast=2.10.1
