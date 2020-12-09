@@ -13,7 +13,7 @@ workflow MAIN {
 }
 
 workflow test {
-    sra_ids_ch = Channel.fromSRA(ids, cache: true, apiKey: params.ncbi_api_key)
+    sra_ids_ch = Channel.fromSRA(params.sra_ids, cache: true, apiKey: params.ncbi_api_key)
 
     TRIMMOMATIC(sra_ids_ch)
 
