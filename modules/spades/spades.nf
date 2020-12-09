@@ -1,18 +1,3 @@
-#!/usr/bin/env nextflow
-
-
-/*
-#==============================================
-code documentation
-#==============================================
-*/
-
-
-/*
-#==============================================
-params
-#==============================================
-*/
 
 params.resultsDir = 'results/spades'
 params.saveMode = 'copy'
@@ -21,14 +6,7 @@ params.filePattern = "./*_{R1,R2}.fastq.gz"
 Channel.fromFilePairs(params.filePattern)
         .into { ch_in_spades }
 
-
-/*
-#==============================================
-# spades
-#==============================================
-*/
-
-process spades {
+process SPADES {
     container 'quay.io/biocontainers/spades:3.14.0--h2d02072_0'
     publishDir params.resultsDir, mode: params.saveMode
 
@@ -48,8 +26,3 @@ process spades {
 }
 
 
-/*
-#==============================================
-# extra
-#==============================================
-*/

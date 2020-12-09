@@ -1,35 +1,12 @@
-#!/usr/bin/env nextflow
-
-
-/*
-#==============================================
-# params
-#==============================================
-*/
 
 params.spadesResults = 'results/spades/*_scaffolds.fasta'
 params.resultsDir = 'results/prokka'
 params.saveMode = 'copy'
 
-
-/*
-#==============================================
-# read genomes
-#==============================================
-*/
-
 Channel.fromPath("""${params.spadesResults}""")
         .into { ch_in_prokka }
 
-
-/*
-#==============================================
-# prokka
-#==============================================
-*/
-
-
-process prokka {
+process PROKKA {
     publishDir params.resultsDir, mode: params.saveMode
     container 'quay.io/biocontainers/prokka:1.14.6--pl526_0'
 
@@ -50,9 +27,3 @@ process prokka {
 }
 
 
-
-/*
-#==============================================
-# extra
-#==============================================
-*/

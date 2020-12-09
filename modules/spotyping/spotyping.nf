@@ -1,44 +1,20 @@
-#!/usr/bin/env nextflow
-
-
-/*
-#==============================================
-code documentation
-#==============================================
-*/
-
-/*
-#==============================================
-params
-#==============================================
-*/
 
 params.resultsDir = 'results/spotyping'
 params.saveMode = 'copy'
 params.R2 = false
-params.filePattern = "./*_{R1,R2}.fastq.gz"
 
 
-/*
-#==============================================
-spotyping
-#==============================================
-*/
-
-Channel.fromFilePairs(params.filePattern)
-        .set { ch_in_spotyping }
-
-
-process spotyping {
-    container 'abhi18av/spotyping'
+process SPOTYPING {
+    container 'nextflowhubcontainers/spotyping'
     publishDir params.resultsDir, mode: params.saveMode
 
+    cpus 2
+
     input:
-    set genomeFileName, file(genomeReads) from ch_in_spotyping
+    tuple genomeFileName, file(genomeReads)
 
     output:
-    tuple file('*.txt'),
-            file('SITVIT*.xls') into ch_out_spotyping
+    tuple file('*.txt'), file('SITVIT*.xls')
 
     script:
     genomeName = genomeFileName.toString().split("\\_")[0]
@@ -50,8 +26,3 @@ process spotyping {
 
 }
 
-/*
-#==============================================
-# extra
-#==============================================
-*/

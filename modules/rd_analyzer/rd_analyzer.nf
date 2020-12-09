@@ -1,42 +1,19 @@
-#!/usr/bin/env nextflow
-
-/*
-#==============================================
-code documentation
-#==============================================
-*/
-
-
-/*
-#==============================================
-params
-#==============================================
-*/
 
 params.saveMode = 'copy'
 params.resultsDir = 'results/rdAnalyzer'
-params.filePattern = "./*_{R1,R2}.fastq.gz"
-
-Channel.fromFilePairs(params.filePattern)
-        .into { ch_in_rdanalyzer }
 
 
-
-/*
-#==============================================
-RD-analyzer
-#==============================================
-*/
-
-process rdAnalyzer {
-    container 'abhi18av/rdanalyzer'
+process RD_ANALYZER {
+    container 'nextflowhubcontainers/rdanalyzer'
     publishDir params.resultsDir, mode: params.saveMode
 
+    cpus 2
+
     input:
-    set genomeFileName, file(genomeReads) from ch_in_rdanalyzer
+    tuple genomeFileName, file(genomeReads)
 
     output:
-    tuple path("""${genomeName}.result"""), path("""${genomeName}.depth""") into ch_out_rdanalyzer
+    tuple path("""${genomeName}.result"""), path("""${genomeName}.depth""")
 
 
     script:
@@ -48,9 +25,3 @@ process rdAnalyzer {
 }
 
 
-
-/*
-#==============================================
-# extra
-#==============================================
-*/
