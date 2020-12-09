@@ -8,7 +8,7 @@ params.shouldPublish = true
 
 process SPOTYPING {
     tag "${genomeFileName}"
-    container 'nextflowhubcontainers/spotyping'
+    container 'quay.io/bioinformatics-playground/spotyping:0.0.1'
     publishDir params.resultsDir, mode: params.saveMode, enabled: params.shouldPublish
     cpus 8
     memory "16 GB"
