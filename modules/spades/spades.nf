@@ -1,20 +1,16 @@
 
 params.resultsDir = 'results/spades'
 params.saveMode = 'copy'
-params.filePattern = "./*_{R1,R2}.fastq.gz"
-
-Channel.fromFilePairs(params.filePattern)
-        .into { ch_in_spades }
 
 process SPADES {
     container 'quay.io/biocontainers/spades:3.14.0--h2d02072_0'
     publishDir params.resultsDir, mode: params.saveMode
 
     input:
-    tuple genomeName, file(genomeReads) from ch_in_spades
+    tuple val(genomeName), path(genomeReads)
 
     output:
-    path """${genomeName}_scaffolds.fasta""" into ch_out_spades
+    tuple val(genomeName), path("${genomeName}_scaffolds.fasta")
 
 
     script:

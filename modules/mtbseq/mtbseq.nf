@@ -6,7 +6,6 @@
 
 
 params.resultsDir = 'results/mtbseq/mtbFull'
-params.readsFilePattern = "./*_{R1,R2}.fastq.gz"
 params.saveMode = 'copy'
 
 Channel.fromFilePairs(params.readsFilePattern)
@@ -19,11 +18,11 @@ process MTBSEQ {
     cpus 4
 
     input:
-    tuple genomeFileName, file("${genomeFileName}_somelib_R?.fastq.gz") from ch_in_mtbFull
+    tuple genomeFileName, file("${genomeFileName}_somelib_R?.fastq.gz")
     env USER from Channel.value("root")
 
     output:
-    path("""${genomeFileName}""") into ch_out_multiqc
+    path("${genomeFileName}")
 
     script:
 
