@@ -1,4 +1,7 @@
+nextflow.enable.dsl=2
 
+
+params.shouldPublish= true
 params.resultsDir = 'results/spades'
 params.saveMode = 'copy'
 
@@ -7,6 +10,7 @@ process SPADES {
     publishDir params.resultsDir, mode: params.saveMode
     container 'quay.io/biocontainers/spades:3.14.0--h2d02072_0'
     cpus 8
+    memory "32 GB"
 
     input:
     tuple val(genomeName), path(genomeReads)
@@ -24,3 +28,22 @@ process SPADES {
 }
 
 
+
+workflow test {
+
+params.TRIMMOMATIC = [
+	shouldPublish: false
+]
+
+
+include { TRIMMOMATIC } from "../trimmomatic/trimmomatic.nf" addParams( params.TRIMMOMATIC )
+
+input_ch = Channel.fromFilePairs("$launchDir/test_data/*_{1,2}.fastq.gz")
+
+TRIMMOMATIC(input_ch)
+
+SPADES(TRIMMOMATIC.out)
+
+
+
+}
