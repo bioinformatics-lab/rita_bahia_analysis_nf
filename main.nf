@@ -2,8 +2,8 @@ nextflow.enable.dsl = 2
 
 
 include { TRIMMOMATIC } from "./modules/trimmomatic/trimmomatic.nf"
-//include { RD_ANALYZER } from "./modules/rd_analyzer/rd_analyzer.nf"
-//include { SPOTYPING } from "./modules/spotyping/spotyping.nf"
+include { RD_ANALYZER } from "./modules/rd_analyzer/rd_analyzer.nf"
+include { SPOTYPING } from "./modules/spotyping/spotyping.nf"
 
 //include { MTBSEQ } from "./modules/mtbseq/mtbseq.nf"
 //include { UNICYCLER } from "./modules/unicycler/unicycler.nf"
@@ -19,9 +19,8 @@ workflow test {
 
     TRIMMOMATIC(sra_ids_ch)
 
-//    RD_ANALYZER(TRIMMOMATIC.out)
-
-//    SPOTYPING(TRIMMOMATIC.out)
+    RD_ANALYZER(TRIMMOMATIC.out)
+    SPOTYPING(TRIMMOMATIC.out)
 
 //   MTBSEQ(TRIMMOMATIC.out)
 //   UNICYCLER(TRIMMOMATIC.out)
