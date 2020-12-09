@@ -149,7 +149,7 @@ ids = [
 */
 ]
 
-  
+
 
 /*
 ================================
@@ -164,7 +164,7 @@ process downloadRawGenomes {
     set genomeName, file(genomeReads) from Channel.fromSRA(ids, cache: true, apiKey: params.apiKey)
 
     script:
-    
+
     """
     mkdir -p ../../../$params.resultsDir
     mv \$(readlink -f ${genomeReads[0]}) ../../../$params.resultsDir/
@@ -174,4 +174,3 @@ process downloadRawGenomes {
 
 
 }
-(base) root@scw-objective-pasteur:~# 

@@ -78,7 +78,7 @@ process mtbFull {
 
 //    container 'conmeehan/mtbseq:version1'
 
-//    container 'arnoldliao95/mtbseq' 
+//    container 'arnoldliao95/mtbseq'
 
 //    validExitStatus 0,1,2
 //    errorStrategy 'ignore'
@@ -107,16 +107,16 @@ maxForks 1
 #    perl /MTBseq_source/MTBseq.pl --step TBfull --thread 8
     MTBseq --step TBfull --thread ${task.cpus}
     
-    cp -a Amend ./${genomeFileName}/
-    cp -a Bam ./${genomeFileName}/
-    cp -a Called ./${genomeFileName}/
-    cp -a Classification ./${genomeFileName}/
-    cp -a GATK_Bam ./${genomeFileName}/
-    cp -a Groups ./${genomeFileName}/
-    cp -a Joint ./${genomeFileName}/
-    cp -a Mpileup ./${genomeFileName}/
-    cp -a Position_Tables ./${genomeFileName}/
-    cp -a Statistics ./${genomeFileName}/
+    mv -a Amend ./${genomeFileName}/
+    mv -a Bam ./${genomeFileName}/
+    mv -a Called ./${genomeFileName}/
+    mv -a Classification ./${genomeFileName}/
+    mv -a GATK_Bam ./${genomeFileName}/
+    mv -a Groups ./${genomeFileName}/
+    mv -a Joint ./${genomeFileName}/
+    mv -a Mpileup ./${genomeFileName}/
+    mv -a Position_Tables ./${genomeFileName}/
+    mv -a Statistics ./${genomeFileName}/
     """
 
 
