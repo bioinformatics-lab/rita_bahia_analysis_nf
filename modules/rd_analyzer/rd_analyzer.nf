@@ -4,6 +4,7 @@ params.resultsDir = 'results/rdAnalyzer'
 
 
 process RD_ANALYZER {
+    tag "${genomeFileName}"
     container 'nextflowhubcontainers/rdanalyzer'
     publishDir params.resultsDir, mode: params.saveMode
 
@@ -13,7 +14,7 @@ process RD_ANALYZER {
     tuple val(genomeFileName), path(genomeReads)
 
     output:
-    tuple path("""${genomeName}.result"""), path("""${genomeName}.depth""")
+    tuple path("*result"), path("*depth")
 
 
     script:

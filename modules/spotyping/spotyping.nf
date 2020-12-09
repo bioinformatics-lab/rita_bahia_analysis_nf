@@ -5,6 +5,7 @@ params.R2 = false
 
 
 process SPOTYPING {
+    tag "${genomeFileName}"
     container 'nextflowhubcontainers/spotyping'
     publishDir params.resultsDir, mode: params.saveMode
 

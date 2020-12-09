@@ -5,6 +5,7 @@ params.resultsDir = 'results/trimmomatic'
 
 
 process TRIMMOMATIC {
+    tag "${genomeName}"
     publishDir params.resultsDir, mode: params.saveMode
     container 'quay.io/biocontainers/trimmomatic:0.35--6'
     cpus 8

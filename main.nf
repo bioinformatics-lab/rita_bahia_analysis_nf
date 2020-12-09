@@ -2,9 +2,10 @@ nextflow.enable.dsl = 2
 
 
 include { TRIMMOMATIC } from "./modules/trimmomatic/trimmomatic.nf"
-//include { MTBSEQ } from "./modules/mtbseq/mtbseq.nf"
 include { RD_ANALYZER } from "./modules/rd_analyzer/rd_analyzer.nf"
 include { SPOTYPING } from "./modules/spotyping/spotyping.nf"
+
+//include { MTBSEQ } from "./modules/mtbseq/mtbseq.nf"
 //include { SPADES } from "./modules/spades/spades.nf"
 //include { PROKKA } from "./modules/prokka/prokka.nf"
 
