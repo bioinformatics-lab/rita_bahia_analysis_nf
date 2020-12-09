@@ -14,7 +14,7 @@ process TRIMMOMATIC {
     tuple val(genomeName), path(genomeReads)
 
     output:
-    path("*_{R1,R2}.p.fastq.gz")
+    tuple val(genomeName), path("*_{R1,R2}.p.fastq.gz")
 
     script:
 
