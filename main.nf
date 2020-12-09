@@ -6,6 +6,7 @@ include { TRIMMOMATIC } from "./modules/trimmomatic/trimmomatic.nf"
 //include { SPOTYPING } from "./modules/spotyping/spotyping.nf"
 
 //include { MTBSEQ } from "./modules/mtbseq/mtbseq.nf"
+//include { UNICYCLER } from "./modules/unicycler/unicycler.nf"
 include { SPADES } from "./modules/spades/spades.nf"
 include { PROKKA } from "./modules/prokka/prokka.nf"
 
@@ -21,6 +22,10 @@ workflow test {
 //    RD_ANALYZER(TRIMMOMATIC.out)
 
 //    SPOTYPING(TRIMMOMATIC.out)
+
+//   UNICYCLER(TRIMMOMATIC.out)
+
+//   MTBSEQ(TRIMMOMATIC.out)
 
     SPADES(TRIMMOMATIC.out)
     PROKKA(SPADES.out)
