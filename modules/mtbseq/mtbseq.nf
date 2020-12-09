@@ -18,8 +18,9 @@ process MTBSEQ {
     cpus 4
 
     input:
-    tuple genomeFileName, file("${genomeFileName}_somelib_R?.fastq.gz")
-    env USER from Channel.value("root")
+    tuple val(genomeFileName), path("${genomeFileName}_somelib_R?.fastq.gz")
+    path(gatk_jar)
+    env USER 
 
     output:
     path("${genomeFileName}")
@@ -28,6 +29,8 @@ process MTBSEQ {
 
     """
 
+
+    gatk-register ${gatk_jar}
 
     mkdir ${genomeFileName}
    
@@ -49,3 +52,23 @@ process MTBSEQ {
 }
 
 
+
+
+workflow test {
+
+include { TRIMMOMATIC } from "../trimmomatic/trimmomatic.nf"
+
+input_ch = Channel.fromFilePairs("$launchDir/test_data/*_{1,2}.fastq.gz")
+
+TRIMMOMATIC(input_ch)
+
+gatk_jar_ch = Channel.fromPath("$launchDir/test_data/*bz2")
+usr_env_ch = Channel.value("root")
+
+MTBSEQ(TRIMMOMATIC.out,
+	gatk_jar_ch,
+	usr_env_ch)
+
+
+
+}

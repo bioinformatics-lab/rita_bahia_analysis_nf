@@ -3,12 +3,13 @@ nextflow.enable.dsl= 2
 
 params.saveMode = 'copy'
 params.resultsDir = 'results/rdAnalyzer'
+params.shouldPublish = true
 
 
 process RD_ANALYZER {
     tag "${genomeFileName}"
     container 'nextflowhubcontainers/rdanalyzer'
-    publishDir params.resultsDir, mode: params.saveMode
+    publishDir params.resultsDir, mode: params.saveMode, enabled: params.shouldPublish
 
     cpus 2
 
@@ -30,12 +31,6 @@ process RD_ANALYZER {
 
 workflow test {
 
-
-// works
-//input_ch = Channel.fromFilePairs("$launchDir/results/trimmomatic/*_{R1,R2}.p.fastq.gz")
-//RD_ANALYZER(input_ch)
-
-
 include { TRIMMOMATIC } from "../trimmomatic/trimmomatic.nf"
 
 input_ch = Channel.fromFilePairs("$launchDir/test_data/*_{1,2}.fastq.gz")
@@ -43,7 +38,6 @@ input_ch = Channel.fromFilePairs("$launchDir/test_data/*_{1,2}.fastq.gz")
 TRIMMOMATIC(input_ch)
 
 RD_ANALYZER(TRIMMOMATIC.out)
-
 
 
 
