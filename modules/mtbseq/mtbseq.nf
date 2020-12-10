@@ -26,6 +26,7 @@ process MTBSEQ {
     script:
 
     """
+    set +e #ignore the silly exit 1 status even after successful execution
 
     gatk-register ${gatk_jar}
 
@@ -43,7 +44,7 @@ process MTBSEQ {
     mv -a Mpileup ./${genomeFileName}/
     mv -a Position_Tables ./${genomeFileName}/
     mv -a Statistics ./${genomeFileName}/
-    exit 0
+    touch ./${genomeFileName}/${genomeFileName}_MTBSEQ_COMPLETED.txt
     """
 
 
