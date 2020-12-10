@@ -5,9 +5,8 @@ include { RD_ANALYZER } from "./modules/rd_analyzer/rd_analyzer.nf"
 include { SPOTYPING } from "./modules/spotyping/spotyping.nf"
 include { SPADES } from "./modules/spades/spades.nf"
 include { PROKKA } from "./modules/prokka/prokka.nf"
+include { MTBSEQ } from "./modules/mtbseq/mtbseq.nf"
 
-
-//include { MTBSEQ } from "./modules/mtbseq/mtbseq.nf"
 //include { UNICYCLER } from "./modules/unicycler/unicycler.nf"
 //include { RAXML } from "./modules/prokka/prokka.nf"
 
