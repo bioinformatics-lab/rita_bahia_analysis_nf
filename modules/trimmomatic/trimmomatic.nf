@@ -2,7 +2,7 @@ nextflow.enable.dsl= 2
 
 
 params.saveMode = 'copy'
-params.resultsDir = '$launchDir/results/trimmomatic'
+params.resultsDir = "${params.outdir}/trimmomatic"
 params.shouldPublish = true
 
 
