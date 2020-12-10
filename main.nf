@@ -22,7 +22,7 @@ workflow test {
 
     TRIMMOMATIC(sra_ids_ch)
     MTBSEQ(TRIMMOMATIC.out,
-            gatk38_jar,
+            gatk38_jar_ch,
             env_user_ch)
 
 //   RD_ANALYZER(TRIMMOMATIC.out) // DONE

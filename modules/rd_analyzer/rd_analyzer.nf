@@ -2,7 +2,7 @@
 nextflow.enable.dsl= 2
 
 params.saveMode = 'copy'
-params.resultsDir = 'results/rdAnalyzer'
+params.resultsDir = "${params.outdir}/rd_analyzer"
 params.shouldPublish = true
 
 

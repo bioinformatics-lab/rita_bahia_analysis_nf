@@ -1,6 +1,6 @@
 nextflow.enable.dsl=2
 
-params.resultsDir = 'results/spotyping'
+params.resultsDir = "${params.outdir}/spotyping"
 params.saveMode = 'copy'
 params.R2 = false
 params.shouldPublish = true

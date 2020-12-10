@@ -1,15 +1,15 @@
 nextflow.enable.dsl=2
 
 
+params.resultsDir = "${params.outdir}/spades"
 params.shouldPublish= true
-params.resultsDir = 'results/spades'
 params.saveMode = 'copy'
 
 process SPADES {
     tag "${genomeName}"
     publishDir params.resultsDir, mode: params.saveMode
     container 'quay.io/biocontainers/spades:3.14.0--h2d02072_0'
-    cpus 8
+    cpus 16
     memory "32 GB"
 
     input:
