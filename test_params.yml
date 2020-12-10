@@ -6,3 +6,5 @@ sra_ids:
 outdir: FIXME
 
 ncbi_api_key: FIXME
+
+gatk38_jar: FIXME

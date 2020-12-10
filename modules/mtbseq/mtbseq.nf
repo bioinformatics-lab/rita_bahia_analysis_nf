@@ -5,14 +5,12 @@ nextflow.enable.dsl = 2
 // - gatk-register gatk_folder/gatk_jar
 
 
-params.resultsDir = 'results/mtbseq/mtbFull'
+params.resultsDir = "${params.outdir}/mtbseq"
 params.saveMode = 'copy'
-
-Channel.fromFilePairs(params.readsFilePattern)
-        .set { ch_in_mtbFull }
+params.shouldPublish = true
 
 process MTBSEQ {
-    publishDir params.resultsDir, mode: params.saveMode
+    publishDir params.resultsDir, mode: params.saveMode, enabled: params.shouldPublish
     container 'quay.io/biocontainers/mtbseq:1.0.3--pl526_1'
     cpus 16
     memory "32 GB"
@@ -28,7 +26,6 @@ process MTBSEQ {
     script:
 
     """
-
 
     gatk-register ${gatk_jar}
 

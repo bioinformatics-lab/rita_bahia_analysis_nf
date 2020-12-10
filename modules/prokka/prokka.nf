@@ -1,6 +1,6 @@
 nextflow.enable.dsl = 2
 
-params.resultsDir = 'results/prokka'
+params.resultsDir = "${params.outdir}/prokka"
 params.saveMode = 'copy'
 params.shouldPublish = true
 
