@@ -26,7 +26,8 @@ process MTBSEQ {
     script:
 
     """
-    set +e #ignore the silly exit 1 status even after successful execution
+    #ignore the silly exit 1 status even after successful execution
+    set +e
 
     gatk-register ${gatk_jar}
 
@@ -34,16 +35,16 @@ process MTBSEQ {
    
     MTBseq --step TBfull --thread ${task.cpus}
     
-    mv -a Amend ./${genomeFileName}/
-    mv -a Bam ./${genomeFileName}/
-    mv -a Called ./${genomeFileName}/
-    mv -a Classification ./${genomeFileName}/
-    mv -a GATK_Bam ./${genomeFileName}/
-    mv -a Groups ./${genomeFileName}/
-    mv -a Joint ./${genomeFileName}/
-    mv -a Mpileup ./${genomeFileName}/
-    mv -a Position_Tables ./${genomeFileName}/
-    mv -a Statistics ./${genomeFileName}/
+    mv  Amend ./${genomeFileName}/
+    mv  Bam ./${genomeFileName}/
+    mv  Called ./${genomeFileName}/
+    mv  Classification ./${genomeFileName}/
+    mv  GATK_Bam ./${genomeFileName}/
+    mv  Groups ./${genomeFileName}/
+    mv  Joint ./${genomeFileName}/
+    mv  Mpileup ./${genomeFileName}/
+    mv  Position_Tables ./${genomeFileName}/
+    mv  Statistics ./${genomeFileName}/
     touch ./${genomeFileName}/${genomeFileName}_MTBSEQ_COMPLETED.txt
     """
 
