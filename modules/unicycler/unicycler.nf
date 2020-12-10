@@ -25,7 +25,7 @@ process UNICYCLER {
     --keep 0 \
     --short1 ${genomeReads[0]} \
     --short2 ${genomeReads[0]} \
-    --outdir ${genomeName} 
+    --out ${genomeName} 
     """
 
 }
