@@ -8,8 +8,8 @@ include { SPOTYPING } from "./modules/spotyping/spotyping.nf"
 include { SPADES } from "./modules/spades/spades.nf"
 include { PROKKA } from "./modules/prokka/prokka.nf"
 include { MTBSEQ } from "./modules/mtbseq/mtbseq.nf"
-
 include { UNICYCLER } from "./modules/unicycler/unicycler.nf"
+
 //include { RAXML } from "./modules/prokka/prokka.nf"
 
 workflow MAIN {
@@ -22,17 +22,14 @@ workflow test {
     env_user_ch = Channel.value("root")
 
     TRIMMOMATIC(sra_ids_ch) // DONE
-    UNICYCLER(TRIMMOMATIC.out) // DOING
-
-//    MTBSEQ(TRIMMOMATIC.out,
-//            gatk38_jar_ch,
-//            env_user_ch) // DONE
-//
-//   RD_ANALYZER(TRIMMOMATIC.out) // DONE
-//   SPOTYPING(TRIMMOMATIC.out) // DONE
-//   SPADES(TRIMMOMATIC.out) // DONE
-//   PROKKA(SPADES.out) // DONE
-
+    UNICYCLER(TRIMMOMATIC.out) // DONE
+    MTBSEQ(TRIMMOMATIC.out,
+            gatk38_jar_ch,
+            env_user_ch) // DONE
+    RD_ANALYZER(TRIMMOMATIC.out) // DONE
+    SPOTYPING(TRIMMOMATIC.out) // DONE
+    SPADES(TRIMMOMATIC.out) // DONE
+    PROKKA(SPADES.out) // DONE
 
 
 // TODO
