@@ -10,6 +10,7 @@ params.saveMode = 'copy'
 params.shouldPublish = true
 
 process MTBSEQ {
+    tag "${genomeFileName}"
     publishDir params.resultsDir, mode: params.saveMode, enabled: params.shouldPublish
     container 'quay.io/biocontainers/mtbseq:1.0.3--pl526_1'
     cpus 16
@@ -45,7 +46,6 @@ process MTBSEQ {
     mv  Mpileup ./${genomeFileName}/
     mv  Position_Tables ./${genomeFileName}/
     mv  Statistics ./${genomeFileName}/
-    touch ./${genomeFileName}/${genomeFileName}_MTBSEQ_COMPLETED.txt
     """
 
 
