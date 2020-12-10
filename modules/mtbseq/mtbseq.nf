@@ -43,6 +43,7 @@ process MTBSEQ {
     mv -a Mpileup ./${genomeFileName}/
     mv -a Position_Tables ./${genomeFileName}/
     mv -a Statistics ./${genomeFileName}/
+    exit 0
     """
 
 
