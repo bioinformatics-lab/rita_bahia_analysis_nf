@@ -19,15 +19,16 @@ workflow test {
     gatk38_jar_ch = Channel.fromPath(params.gatk38_jar)
     env_user_ch = Channel.value("root")
 
-    TRIMMOMATIC(sra_ids_ch)
+    TRIMMOMATIC(sra_ids_ch) // DONE
+
     MTBSEQ(TRIMMOMATIC.out,
             gatk38_jar_ch,
-            env_user_ch)
+            env_user_ch) // DONE
 
-//   RD_ANALYZER(TRIMMOMATIC.out) // DONE
-//   SPOTYPING(TRIMMOMATIC.out) // DONE
-//   SPADES(TRIMMOMATIC.out) // DONE
-//   PROKKA(SPADES.out) // DONE
+   RD_ANALYZER(TRIMMOMATIC.out) // DONE
+   SPOTYPING(TRIMMOMATIC.out) // DONE
+   SPADES(TRIMMOMATIC.out) // DONE
+   PROKKA(SPADES.out) // DONE
 
 
 
