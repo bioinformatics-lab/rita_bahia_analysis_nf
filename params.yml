@@ -1,3 +1,10 @@
+outdir: FIXME
+
+ncbi_api_key: FIXME
+
+gatk38_jar: FIXME
+
+
 sra_ids:
     - ERR1035258
     - ERR1035259
