@@ -12,7 +12,7 @@ include { UNICYCLER } from "./modules/unicycler/unicycler.nf"
 
 //include { RAXML } from "./modules/prokka/prokka.nf"
 
-workflow MAIN {
+workflow {
 
     sra_ids_ch = Channel.fromSRA(params.sra_ids, cache: true, apiKey: params.ncbi_api_key)
     gatk38_jar_ch = Channel.value(Paths.get(params.gatk38_jar))
