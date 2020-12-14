@@ -1,5 +1,7 @@
 nextflow.enable.dsl = 2
 
+import java.nio.file.Paths
+
 include { TRIMMOMATIC } from "./modules/trimmomatic/trimmomatic.nf"
 include { RD_ANALYZER } from "./modules/rd_analyzer/rd_analyzer.nf"
 include { SPOTYPING } from "./modules/spotyping/spotyping.nf"
@@ -34,14 +36,14 @@ workflow test {
     env_user_ch = Channel.value("root")
 
     TRIMMOMATIC(sra_ids_ch) // DONE
-    UNICYCLER(TRIMMOMATIC.out) // DONE
+//    UNICYCLER(TRIMMOMATIC.out) // DONE
     MTBSEQ(TRIMMOMATIC.out,
             gatk38_jar_ch,
             env_user_ch) // DONE
-    RD_ANALYZER(TRIMMOMATIC.out) // DONE
-    SPOTYPING(TRIMMOMATIC.out) // DONE
-    SPADES(TRIMMOMATIC.out) // DONE
-    PROKKA(SPADES.out) // DONE
+//    RD_ANALYZER(TRIMMOMATIC.out) // DONE
+//    SPOTYPING(TRIMMOMATIC.out) // DONE
+//    SPADES(TRIMMOMATIC.out) // DONE
+//    PROKKA(SPADES.out) // DONE
 
 
 // TODO
