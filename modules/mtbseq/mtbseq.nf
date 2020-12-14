@@ -9,6 +9,7 @@ params.resultsDir = "${params.outdir}/mtbseq"
 params.saveMode = 'copy'
 params.shouldPublish = true
 
+// TODO: Add the tbjoin workflow
 process MTBSEQ {
     tag "${genomeFileName}"
     publishDir params.resultsDir, mode: params.saveMode, enabled: params.shouldPublish
