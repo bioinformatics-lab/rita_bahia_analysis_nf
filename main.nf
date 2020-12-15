@@ -1,7 +1,5 @@
 nextflow.enable.dsl = 2
 
-import java.nio.file.Paths
-
 include { TRIMMOMATIC } from "./modules/trimmomatic/trimmomatic.nf"
 include { RD_ANALYZER } from "./modules/rd_analyzer/rd_analyzer.nf"
 include { SPOTYPING } from "./modules/spotyping/spotyping.nf"
