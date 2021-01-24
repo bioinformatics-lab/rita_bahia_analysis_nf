@@ -1,4 +1,6 @@
-# This script is sourced from https://cloud.google.com/life-sciences/docs/tutorials/nextflow
+# This script is sourced from
+# - https://cloud.google.com/life-sciences/docs/tutorials/nextflow
+# - https://www.nextflow.io/docs/latest/google.html
 
 # Setup gcloud CLI
 
@@ -46,6 +48,7 @@ export SERVICE_ACCOUNT_KEY_FILE=${PWD}/${SERVICE_ACCOUNT_KEY}
 
 export GOOGLE_APPLICATION_CREDENTIALS=${PWD}/${SERVICE_ACCOUNT_KEY}
 
+nextflow run main.nf -params-file params.yml -profile google_cloud_life_sciences -queue-size 1
 
 
 
