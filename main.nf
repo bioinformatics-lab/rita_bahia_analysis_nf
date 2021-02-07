@@ -49,8 +49,8 @@ workflow mtbseq {
 
     MTBSEQ_COHORT(
             samples_tsv_file_ch,
-            mtbseq_called_results_ch,
-            mtbseq_position_table_results_ch,
+            mtbseq_called_results_ch.collect(),
+            mtbseq_position_table_results_ch.collect(),
             gatk38_jar_ch,
             env_user_ch,
     )
