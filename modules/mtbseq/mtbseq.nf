@@ -14,8 +14,8 @@ process MTBSEQ {
     tag "${genomeFileName}"
     publishDir params.resultsDir, mode: params.saveMode, enabled: params.shouldPublish
     container 'quay.io/biocontainers/mtbseq:1.0.3--pl526_1'
-    cpus 16
-    memory "32 GB"
+    cpus 8
+    memory "16 GB"
 
     input:
     tuple val(genomeFileName), path("${genomeFileName}_somelib_R?.fastq.gz")
