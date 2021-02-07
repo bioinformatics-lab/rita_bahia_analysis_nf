@@ -75,6 +75,7 @@ process MTBSEQ_COHORT {
     script:
 
     """
+    set +e
 
     gatk-register ${gatk_jar}
 
