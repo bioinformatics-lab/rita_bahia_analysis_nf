@@ -54,6 +54,39 @@ process MTBSEQ {
 
 
 
+params.resultsDir_mtbseq_cohort = "${params.outdir}/mtbseq_cohort"
+params.saveMode_mtbseq_cohort = 'copy'
+params.shouldPublish_mtbseq_cohort = true
+
+process MTBSEQ_COHORT {
+    publishDir params.resultsDir_mtbseq_cohort, mode: params.saveMode_mtbseq_cohort, enabled: params.shouldPublish_mtbseq_cohort
+    container 'quay.io/biocontainers/mtbseq:1.0.3--pl526_1'
+
+    input:
+    path(samples_tsv_ch)
+    path("Called/*")
+    path("Position_Tables/*")
+    path(gatk_jar)
+    env USER
+
+    output:
+    tuple path("Joint"), path("Amend"), path("Groups")
+
+    script:
+
+    """
+
+    gatk-register ${gatk_jar}
+
+    export USER=$USER
+
+    mkdir Joint && MTBseq --step TBjoin --samples ${samples_tsv_ch} --project ${params.mtbseq_project_name}
+    mkdir Amend && MTBseq --step TBamend --samples ${samples_tsv_ch} --project ${params.mtbseq_project_name}
+    mkdir Groups && MTBseq --step TBgroups --samples ${samples_tsv_ch} --project ${params.mtbseq_project_name}
+    """
+
+}
+
 
 workflow test {
 

@@ -30,6 +30,31 @@ workflow {
 
 }
 
+
+
+workflow mtbseq {
+
+    samples_tsv_file_ch = Channel.of(params.sra_ids)
+            .collect()
+            .flatten().map { n ->  "$n" + "\t" + "$params.mtbseq_library_name" + "\n"  }
+            .collectFile(name: 'samples.tsv', newLine: false, storeDir: "$params.resultsDir_mtbseq_cohort")
+
+    mtbseq_called_results = Channel.of("$resultsDir_mtbseq_cohort/Called/*tab")
+    mtbseq_called_results.view()
+
+    mtbseq_position_table_results = Channel.of("$resultsDir_mtbseq_cohort/Position_Tables/*tab")
+
+//    MTBSEQ_COHORT(
+//            samples_tsv_file_ch,
+//            mtbseq_called_results,
+//            mtbseq_position_table_results,
+//            gatk38_jar_ch,
+//            env_user_ch,
+//    )
+
+}
+
+
 workflow test {
     sra_ids_ch = Channel.fromSRA(params.sra_ids, cache: true, apiKey: params.ncbi_api_key)
     gatk38_jar_ch = Channel.value(params.gatk38_jar)
