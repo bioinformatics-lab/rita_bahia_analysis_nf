@@ -3,8 +3,14 @@ sra_ids:
     - ERR1035259
     - ERR1035260
 
-outdir: FIXME
+ncbi_api_key : 
+        FIXME
 
-ncbi_api_key: FIXME
+gatk38_jar : 
+        gs://bahia-analysis-bucket/GenomeAnalysisTK.jar
 
-gatk38_jar: FIXME
+outdir : 
+        gs://bahia-analysis-bucket/results/
+
+
+

@@ -1,11 +1,17 @@
-outdir: FIXME
+ncbi_api_key : 
+        FIXME
 
-ncbi_api_key: FIXME
+gatk38_jar : 
+        gs://bahia-analysis-bucket/GenomeAnalysisTK.jar
 
-gatk38_jar: FIXME
+outdir : 
+        gs://bahia-analysis-bucket/results/
+
 
 
 sra_ids:
+    - ERR1035303 # problematic with mtbseqq/position-tables
+    - ERR1035365  #problematic with unicycler/spades
     - ERR1035258
     - ERR1035259
     - ERR1035260
@@ -51,7 +57,6 @@ sra_ids:
     - ERR1035300
     - ERR1035301
     - ERR1035302
-    - ERR1035303
     - ERR1035304
     - ERR1035305
     - ERR1035306
@@ -113,7 +118,6 @@ sra_ids:
     - ERR1035362
     - ERR1035363
     - ERR1035364
-    - ERR1035365
     - ERR1034618
     - ERR1034619
     - ERR1034620
