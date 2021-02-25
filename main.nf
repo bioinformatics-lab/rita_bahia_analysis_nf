@@ -32,6 +32,23 @@ workflow {
 
 
 
+workflow SPADES_PROKKA_WF {
+
+    sra_ids_ch = Channel.fromSRA(params.sra_ids, cache: true, apiKey: params.ncbi_api_key)
+    gatk38_jar_ch = Channel.value(params.gatk38_jar)
+    env_user_ch = Channel.value("root")
+
+    TRIMMOMATIC(sra_ids_ch) // DONE
+
+    SPADES(TRIMMOMATIC.out)
+    PROKKA(SPADES.out)
+
+}
+
+
+
+
+
 workflow mtbseq {
 
     gatk38_jar_ch = Channel.value(params.gatk38_jar)
