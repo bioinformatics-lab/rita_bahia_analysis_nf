@@ -1,0 +1,23 @@
+ncbi_api_key :
+        '<your ncbi api key>'
+
+gatk38_jar :
+        '<your GenomeAnalysisTK.jar>'
+
+outdir :
+        '<your outdir name>'
+
+mtbseq_library_name:
+        '<your mtbseq library name>'
+
+mtbseq_project_name:
+        '<your mtbseq project name>'
+
+resultsDir_mtbseq_cohort:
+        '<your result mtbseq cohort outdir name>'
+
+sra_ids:
+#   replace with your sra ids
+    - <id>
+    - <id>
+    
