@@ -27,6 +27,19 @@ process RD_ANALYZER {
     """
     python  /RD-Analyzer/RD-Analyzer.py  -o ${genomeName} ${genomeReads[0]} ${genomeReads[1]}
     """
+
+    stub: 
+    genomeName = genomeFileName.toString().split("\\_")[0]
+
+    """
+    echo python  /RD-Analyzer/RD-Analyzer.py  -o ${genomeName} ${genomeReads[0]} ${genomeReads[1]}
+
+    mkdir ${genomeName}_result
+    mkdir ${genomeName}_depth
+
+    """
+
+
 }
 
 

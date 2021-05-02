@@ -25,6 +25,14 @@ process SPADES {
     spades.py -k 21,33,55,77 --careful --only-assembler --pe1-1 ${genomeReads[0]} --pe1-2 ${genomeReads[1]} -o ${genomeName} -t ${task.cpus}
     cp ${genomeName}/contigs.fasta ${genomeName}_contigs.fasta 
     """
+
+    stub:
+
+    """
+    echo spades.py -k 21,33,55,77 --careful --only-assembler --pe1-1 ${genomeReads[0]} --pe1-2 ${genomeReads[1]} -o ${genomeName} -t ${task.cpus}
+
+    mkdir ${genomeName}_contigs.fasta
+    """
 }
 
 
