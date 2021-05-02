@@ -2,7 +2,7 @@ ncbi_api_key :
   FIXME
 
 gatk38_jar :
-  data/mock_data/GenomeAnalysisTK.jar
+  /data/mock_data/GenomeAnalysisTK.jar
 
 outdir :
   results/

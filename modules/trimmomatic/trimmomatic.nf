@@ -60,8 +60,8 @@ process TRIMMOMATIC {
     LEADING:3 TRAILING:3 SLIDINGWINDOW:4:20 MINLEN:36
     
     mkdir ${genomeName}
-    touch ${genomeName}/${genomeName}_R1.p.fastq.gz
-    touch ${genomeName}/${genomeName}_R2.p.fastq.gz
+    ${genomeName}_R1.p.fastq.gz
+    ${genomeName}_R2.p.fastq.gz
     """
 
 
