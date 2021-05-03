@@ -46,6 +46,16 @@ process MTBSEQ {
     mv  Statistics ./${genomeFileName}/
     """
 
+    stub:
+
+    """
+    echo "gatk-register ${gatk_jar}"
+    echo "MTBseq --step TBfull --thread ${task.cpus}"
+
+    mkdir ${genomeFileName}
+
+    """
+
 
 }
 
@@ -80,6 +90,17 @@ process MTBSEQ_COHORT {
     mkdir Joint && MTBseq --step TBjoin --samples ${samples_tsv_ch} --project ${params.mtbseq_project_name}
     mkdir Amend && MTBseq --step TBamend --samples ${samples_tsv_ch} --project ${params.mtbseq_project_name}
     mkdir Groups && MTBseq --step TBgroups --samples ${samples_tsv_ch} --project ${params.mtbseq_project_name}
+    """
+
+    stub:
+
+    """
+    echo gatk-register ${gatk_jar}
+    export USER=$USER
+
+    mkdir Joint
+    mkdir Amend 
+    mkdir Groups
     """
 
 }
