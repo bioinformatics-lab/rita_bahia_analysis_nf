@@ -13,9 +13,6 @@ params.shouldPublish = true
 process MTBSEQ {
     tag "${genomeFileName}"
     publishDir params.resultsDir, mode: params.saveMode, enabled: params.shouldPublish
-    container 'quay.io/biocontainers/mtbseq:1.0.3--pl526_1'
-    cpus 8
-    memory "16 GB"
 
     input:
     tuple val(genomeFileName), path("${genomeFileName}_somelib_R?.fastq.gz")
@@ -60,7 +57,6 @@ params.shouldPublish_mtbseq_cohort = true
 
 process MTBSEQ_COHORT {
     publishDir params.resultsDir_mtbseq_cohort, mode: params.saveMode_mtbseq_cohort, enabled: params.shouldPublish_mtbseq_cohort
-    container 'quay.io/biocontainers/mtbseq:1.0.3--pl526_1'
 
     input:
     path(samples_tsv_ch)
