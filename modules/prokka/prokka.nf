@@ -26,7 +26,7 @@ process PROKKA {
     stub:
 
     """
-    echo prokka --outdir ${genomeName} --prefix $genomeName ${bestContig} --cpus ${task.cpus}
+    echo "prokka --outdir ${genomeName} --prefix $genomeName ${bestContig} --cpus ${task.cpus}"
 
     mkdir ${genomeName}
     """

@@ -31,12 +31,12 @@ process UNICYCLER {
     stub:
 
     """
-    echo unicycler  \
+    echo "unicycler  \
     -t ${task.cpus} \
     --keep 0 \
     --short1 ${genomeReads[0]} \
     --short2 ${genomeReads[1]} \
-    --out ${genomeName} 
+    --out ${genomeName}" 
 
     mkdir ${genomeName}
     """

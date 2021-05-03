@@ -52,8 +52,8 @@ process MTBSEQ {
     stub:
 
     """
-    echo gatk-register ${gatk_jar}
-    echo MTBseq --step TBfull --thread ${task.cpus}
+    echo "gatk-register ${gatk_jar}"
+    echo "MTBseq --step TBfull --thread ${task.cpus}"
 
     mkdir ${genomeFileName}
 
