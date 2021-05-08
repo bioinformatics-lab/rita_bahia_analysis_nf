@@ -10,3 +10,4 @@ tasks:
   with_stubs:
     cmds:
       - NXF_VER=21.04.0 nextflow run main.nf -profile stub -resume -stub-run -with-tower
+      
