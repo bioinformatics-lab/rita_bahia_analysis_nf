@@ -13,7 +13,7 @@ mtbseq_library_name:
 mtbseq_project_name:
         '<your mtbseq project name>'
 
-resultsDir_mtbseq_cohort:
+results_dir_mtbseq_cohort:
         '<your result mtbseq cohort outdir name>'
 
 sra_ids:

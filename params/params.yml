@@ -13,7 +13,7 @@ mtbseq_library_name:
 mtbseq_project_name:
         BahiaAnalysis
 
-resultsDir_mtbseq_cohort:
+results_dir_mtbseq_cohort:
         gs://bahia-analysis-bucket/results/mtbseq_cohort
 
 sra_ids:
