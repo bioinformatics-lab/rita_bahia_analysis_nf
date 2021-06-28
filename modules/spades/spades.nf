@@ -1,13 +1,13 @@
 nextflow.enable.dsl=2
 
 
-params.resultsDir = "${params.outdir}/spades"
-params.shouldPublish= true
-params.saveMode = 'copy'
+params.results_dir = "${params.outdir}/spades"
+params.should_publish= true
+params.save_mode = 'copy'
 
 process SPADES {
     tag "${genomeName}"
-    publishDir params.resultsDir, mode: params.saveMode
+    publishDir params.results_dir, mode: params.save_mode
 
     input:
     tuple val(genomeName), path(genomeReads)

@@ -1,14 +1,14 @@
 
 nextflow.enable.dsl= 2
 
-params.saveMode = 'copy'
-params.resultsDir = "${params.outdir}/rd_analyzer"
-params.shouldPublish = true
+params.save_mode = 'copy'
+params.results_dir = "${params.outdir}/rd_analyzer"
+params.should_publish = true
 
 
 process RD_ANALYZER {
     tag "${genomeFileName}"
-    publishDir params.resultsDir, mode: params.saveMode, enabled: params.shouldPublish
+    publishDir params.results_dir, mode: params.save_mode, enabled: params.should_publish
 
     input:
     tuple val(genomeFileName), path(genomeReads)

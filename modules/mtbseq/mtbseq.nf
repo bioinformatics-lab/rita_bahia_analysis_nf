@@ -5,14 +5,14 @@ nextflow.enable.dsl = 2
 // - gatk-register gatk_folder/gatk_jar
 
 
-params.resultsDir = "${params.outdir}/mtbseq"
-params.saveMode = 'copy'
-params.shouldPublish = true
+params.results_dir = "${params.outdir}/mtbseq"
+params.save_mode = 'copy'
+params.should_publish = true
 
 // TODO: Add the tbjoin workflow
 process MTBSEQ {
     tag "${genomeFileName}"
-    publishDir params.resultsDir, mode: params.saveMode, enabled: params.shouldPublish
+    publishDir params.results_dir, mode: params.save_mode, enabled: params.should_publish
 
     input:
     tuple val(genomeFileName), path("${genomeFileName}_somelib_R?.fastq.gz")
@@ -61,12 +61,12 @@ process MTBSEQ {
 
 
 
-params.resultsDir_mtbseq_cohort = "${params.outdir}/mtbseq_cohort"
-params.saveMode_mtbseq_cohort = 'copy'
-params.shouldPublish_mtbseq_cohort = true
+params.results_dir_mtbseq_cohort = "${params.outdir}/mtbseq_cohort"
+params.save_mode_mtbseq_cohort = 'copy'
+params.should_publish_mtbseq_cohort = true
 
 process MTBSEQ_COHORT {
-    publishDir params.resultsDir_mtbseq_cohort, mode: params.saveMode_mtbseq_cohort, enabled: params.shouldPublish_mtbseq_cohort
+    publishDir params.results_dir_mtbseq_cohort, mode: params.save_mode_mtbseq_cohort, enabled: params.should_publish_mtbseq_cohort
 
     input:
     path(samples_tsv_ch)

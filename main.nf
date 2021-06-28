@@ -58,11 +58,11 @@ workflow mtbseq {
     samples_tsv_file_ch = Channel.of(params.sra_ids)
             .collect()
             .flatten().map { n ->  "$n" + "\t" + "$params.mtbseq_library_name" + "\n"  }
-            .collectFile(name: 'samples.tsv', newLine: false, storeDir: "$params.resultsDir_mtbseq_cohort")
+            .collectFile(name: 'samples.tsv', newLine: false, storeDir: "$params.results_dir_mtbseq_cohort")
 
-    mtbseq_called_results_ch = Channel.fromPath("$params.resultsDir_mtbseq_cohort/Called/*tab")
+    mtbseq_called_results_ch = Channel.fromPath("$params.results_dir_mtbseq_cohort/Called/*tab")
 
-    mtbseq_position_table_results_ch = Channel.fromPath("$params.resultsDir_mtbseq_cohort/Position_Tables/*tab")
+    mtbseq_position_table_results_ch = Channel.fromPath("$params.results_dir_mtbseq_cohort/Position_Tables/*tab")
 
     MTBSEQ_COHORT(
             samples_tsv_file_ch,
