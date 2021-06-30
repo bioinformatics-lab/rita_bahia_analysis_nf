@@ -13,9 +13,6 @@ mtbseq_library_name:
 mtbseq_project_name:
         BahiaAnalysis
 
-resultsDir_mtbseq_cohort:
-        gs://bahia-analysis-bucket/results/mtbseq_cohort
-
 sra_ids:
 #    - ERR1035303 # PROBLEMATIC with mtbseqq/position-tables
 #    - ERR1035365  # PROBLEMATIC with unicycler/spades

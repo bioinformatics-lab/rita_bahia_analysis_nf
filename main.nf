@@ -5,7 +5,8 @@ include { RD_ANALYZER } from "./modules/rd_analyzer/rd_analyzer.nf"
 include { SPOTYPING } from "./modules/spotyping/spotyping.nf"
 include { SPADES } from "./modules/spades/spades.nf"
 include { PROKKA } from "./modules/prokka/prokka.nf"
-include { MTBSEQ; MTBSEQ_COHORT } from "./modules/mtbseq/mtbseq.nf"
+include { MTBSEQ_PER_SAMPLE } from "./modules/mtbseq/mtbseq_per_sample.nf"
+include { MTBSEQ_COHORT } from "./modules/mtbseq/mtbseq_cohort.nf"
 include { UNICYCLER } from "./modules/unicycler/unicycler.nf"
 
 //include { RAXML } from "./modules/prokka/prokka.nf"
@@ -57,12 +58,12 @@ workflow mtbseq {
 
     samples_tsv_file_ch = Channel.of(params.sra_ids)
             .collect()
-            .flatten().map { n ->  "$n" + "\t" + "$params.mtbseq_library_name" + "\n"  }
-            .collectFile(name: 'samples.tsv', newLine: false, storeDir: "$params.resultsDir_mtbseq_cohort")
+            .flatten().map { n ->  "$n" + "\t" + "${params.mtbseq_library_name}" + "\n"  }
+            .collectFile(name: 'samples.tsv', newLine: false, storeDir: "${params.outdir}/mtbseq/cohort")
 
-    mtbseq_called_results_ch = Channel.fromPath("$params.resultsDir_mtbseq_cohort/Called/*tab")
+    mtbseq_called_results_ch = Channel.fromPath("${params.outdir}/mtbseq/cohort/Called/*tab")
 
-    mtbseq_position_table_results_ch = Channel.fromPath("$params.resultsDir_mtbseq_cohort/Position_Tables/*tab")
+    mtbseq_position_table_results_ch = Channel.fromPath("${params.outdir}/mtbseq/cohort/Position_Tables/*tab")
 
     MTBSEQ_COHORT(
             samples_tsv_file_ch,
