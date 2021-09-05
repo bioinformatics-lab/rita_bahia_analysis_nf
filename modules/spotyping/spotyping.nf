@@ -21,7 +21,7 @@ process SPOTYPING {
     genomeReadToBeAnalyzed = params.R2 ? genomeReads[1] : genomeReads[0]
 
     """
-    python /SpoTyping-v2.0/SpoTyping-v2.0-commandLine/SpoTyping.py ./${genomeReadToBeAnalyzed} -o ${genomeName}.txt
+    SpoTyping.py ./${genomeReadToBeAnalyzed} -o ${genomeName}.txt
     """
 
     stub:
@@ -30,7 +30,7 @@ process SPOTYPING {
     genomeReadToBeAnalyzed = params.R2 ? genomeReads[1] : genomeReads[0]
 
     """
-    echo "python /SpoTyping-v2.0/SpoTyping-v2.0-commandLine/SpoTyping.py ./${genomeReadToBeAnalyzed} -o ${genomeName}.txt"
+    echo "SpoTyping.py ./${genomeReadToBeAnalyzed} -o ${genomeName}.txt"
 
     touch ${genomeFileName}.txt
     touch SITVIT_${genomeFileName}.xls

@@ -21,14 +21,14 @@ process RD_ANALYZER {
     genomeName = genomeFileName.toString().split("\\_")[0]
 
     """
-    python  /RD-Analyzer/RD-Analyzer.py  -o ${genomeName} ${genomeReads[0]} ${genomeReads[1]}
+    RD-Analyzer.py  -o ${genomeName} ${genomeReads[0]} ${genomeReads[1]}
     """
 
     stub: 
     genomeName = genomeFileName.toString().split("\\_")[0]
 
     """
-    echo "python  /RD-Analyzer/RD-Analyzer.py  -o ${genomeName} ${genomeReads[0]} ${genomeReads[1]}"
+    echo "RD-Analyzer.py  -o ${genomeName} ${genomeReads[0]} ${genomeReads[1]}"
 
     mkdir ${genomeName}_result
     mkdir ${genomeName}_depth
