@@ -8,6 +8,7 @@ include { PROKKA } from "./modules/prokka/prokka.nf"
 include { MTBSEQ_PER_SAMPLE } from "./modules/mtbseq/mtbseq_per_sample.nf"
 include { MTBSEQ_COHORT } from "./modules/mtbseq/mtbseq_cohort.nf"
 include { UNICYCLER } from "./modules/unicycler/unicycler.nf"
+include { TBPROFILER_PROFILE; TBPROFILER_COLLATE } from "./modules/tbprofiler/tbprofiler.nf"
 
 //include { RAXML } from "./modules/prokka/prokka.nf"
 
@@ -98,3 +99,12 @@ workflow test {
 
 }
 
+
+
+workflow TBPROFILER {
+    sra_ids_ch = Channel.fromSRA(params.sra_ids, cache: true, apiKey: params.ncbi_api_key)
+
+    TRIMMOMATIC(sra_ids_ch)
+    TBPROFILER_PROFILE(TRIMMOMATIC.out)
+    TBPROFILER_COLLATE(TBPROFILER_PROFILE.out.collect())
+}
