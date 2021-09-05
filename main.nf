@@ -101,7 +101,7 @@ workflow test {
 
 
 
-workflow TBPROFILER {
+workflow TBPROFILER_WF {
     sra_ids_ch = Channel.fromSRA(params.sra_ids, cache: true, apiKey: params.ncbi_api_key)
 
     TRIMMOMATIC(sra_ids_ch)
