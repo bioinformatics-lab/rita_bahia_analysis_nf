@@ -102,9 +102,9 @@ workflow test {
 
 
 workflow TBPROFILER_WF {
-    sra_ids_ch = Channel.fromSRA(params.sra_ids, cache: true, apiKey: params.ncbi_api_key)
 
-    TRIMMOMATIC(sra_ids_ch)
-    TBPROFILER_PROFILE(TRIMMOMATIC.out)
+    reads_ch = Channel.fromPath(params.input_samplesheet)
+
+    TBPROFILER_PROFILE(reads_ch)
     TBPROFILER_COLLATE(TBPROFILER_PROFILE.out.collect())
 }
