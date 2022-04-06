@@ -103,7 +103,7 @@ workflow test {
 
 workflow TBPROFILER_WF {
 
-    reads_ch = Channel.fromFilePairs("/home/cust100107_vol1/biosharpou/rita_bahia_analysis/86genomes_fastq/*_{1,2}.fastq.gz")
+    reads_ch = Channel.fromFilePairs("/home/rita_bahia_analysis/86genomes_fastq/*_{1,2}.fastq.gz")
 
     TBPROFILER_PROFILE(reads_ch)
     TBPROFILER_COLLATE(TBPROFILER_PROFILE.out.collect())
